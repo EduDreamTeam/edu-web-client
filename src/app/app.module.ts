@@ -8,10 +8,12 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { LoginModule } from './login/login.module';
+import { AddWordModule } from "./add-word/add-word.module";
 import { MainModule } from "./main/main.module";
 import { AuthenticationService } from './services';
 import { UserService } from './services';
 import { SignUpModule } from './sign-up/sign-up.module';
+import { DictionaryService } from "./services";
 
 import { fakeBackendProvider } from "./helpers";
 
@@ -27,6 +29,7 @@ import { fakeBackendProvider } from "./helpers";
     MainModule,
     HttpModule,
     SignUpModule,
+    AddWordModule,
   ],
   providers: [
     // fakeBackendProvider,
@@ -40,6 +43,7 @@ import { fakeBackendProvider } from "./helpers";
     },
     AuthenticationService,
     UserService,
+    DictionaryService,
   ],
   bootstrap: [AppComponent]
 })

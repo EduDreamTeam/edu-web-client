@@ -1,10 +1,20 @@
-<div fxFlex="100" fullscreen >
+<div fxFlex="100" fullscreen fxLayout="column">
   <div class="text">
     Привет, {{(user | async)?.firstName}}!
   </div>
-  
+
   <div class="text">
-    В копилке уже 10 слов!
+    В копилке уже {{(words | async)?.length}} слов!
   </div>
+  <div fxLayoutAlign="space-around center" fxFlex="50" (click)="addWord()">
+    <button mat-raised-button color="primary" fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
+      Добавить новые слова
+    </button>
+  
+    <button mat-raised-button color="primary" fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
+      Начать тренировку
+    </button>
+  </div>
+  
 </div>
 

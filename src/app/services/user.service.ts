@@ -27,6 +27,13 @@ export class UserService {
         return this.http.get(path, options)
             .map((response: Response) => response.json())
             .catch((error: Error) => Observable.throw('Server error'));
-    }
 
+        // return Observable.of({
+        //     id: 1,
+        //     firstName: "Nataly",
+        //     lastName: "Belyaeva",
+        //     login: "login",
+        //     email: "email"
+        // } as UserModel)
+    }
 }

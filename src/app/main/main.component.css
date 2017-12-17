@@ -6,8 +6,11 @@
 
 button {
     opacity: 0.8;
+    font-size: 2em;
+    height: 80px;
 }
 
 .text {
     font-size: 4em;
+    margin-bottom: 40px;
 }

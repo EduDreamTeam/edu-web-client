@@ -1,0 +1,40 @@
+<div fxLayoutAlign="center center" fxFlex="100" fullscreen >
+    <form role="form" (submit)="addWord()" fxFlex="30" fxFlex.sm="40" fxFlex.xs="80">
+        <mat-card fxLayout="column" fxLayoutAlign="center">
+            <mat-card-title fxLayoutAlign="center center">
+                НОВОЕ СЛОВО
+            </mat-card-title>
+            <mat-card-content class="card-content">
+                <mat-form-field>
+                    <input matInput 
+                            type="text"
+                            required 
+                            [(ngModel)]="word" 
+                            id="word" 
+                            name="word">
+                    <mat-placeholder fxFLex="100">
+                        <md-icon>Слово</md-icon>
+                    </mat-placeholder>
+                </mat-form-field>
+
+                <mat-form-field *ngFor="let translate of translateList; let i = index; trackBy:trackByIndex">
+                    <input matInput 
+                            type="text" 
+                            [ngModel]="translateList[i]" 
+                            id="translate{{i}}" 
+                            name="translate{{i}}"
+                            (change)="onValueUpdate($event, i)">
+                    <mat-placeholder>
+                        <md-icon>Перевод</md-icon>
+                    </mat-placeholder>
+                </mat-form-field>
+                
+                <div (click)="addTranslate()">Добавить еще перевод</div>
+                <span *ngIf="error" class="error"><small>{{ error }}</small></span>
+            </mat-card-content>
+            <button mat-raised-button color="primary" fxLayout="row" type="submit" fxLayoutAlign="center center" fxFlex="40">
+                Добавить в словарик!
+            </button>
+        </mat-card>
+    </form >
+</div>

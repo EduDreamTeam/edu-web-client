@@ -36,12 +36,6 @@ export class LoginComponent implements OnInit {
                 // save the token in local storage
                 let token = data.access_token;
                 localStorage.setItem('token', token);
-                console.log(data);
-                let jwtHelper: JwtHelper = new JwtHelper();
-
-                console.log(`expiration: ${jwtHelper.getTokenExpirationDate(token)}`);
-                console.log(`is expired: ${jwtHelper.isTokenExpired(token)}`);
-                console.log(`decoded: ${JSON.stringify(jwtHelper.decodeToken(token))}`);
                 this.router.navigate(['/main']);
             },
             (error) => {

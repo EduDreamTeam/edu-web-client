@@ -5,7 +5,6 @@ import {
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatToolbarModule,
   } from '@angular/material';
 import {
     FormsModule,
@@ -23,7 +22,6 @@ const MATERIAL_MODULES = [
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatToolbarModule,
 ];
 
 @NgModule({
