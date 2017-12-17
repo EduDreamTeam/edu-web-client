@@ -1,0 +1,13 @@
+:host {
+    display: block;
+    height: 100vh;
+    background: rgba(255, 213, 79, 0.521);
+  }
+
+button {
+    opacity: 0.8;
+}
+
+.text {
+    font-size: 4em;
+}

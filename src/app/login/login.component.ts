@@ -22,17 +22,21 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService) { }
 
-    public ngOnInit() {
+    public ngOnInit(): void {
         this.authenticationService.logout();
     }
 
-    public login() {
+    public signUp(): void {
+        this.router.navigate(['/sign-up']);
+    }
+
+    public login(): void {
         this.authenticationService.login(this.username, this.password)
             .subscribe((data) => {
                 // save the token in local storage
                 let token = data.access_token;
-                localStorage.setItem('id_token', token);
-        
+                localStorage.setItem('token', token);
+                console.log(data);
                 let jwtHelper: JwtHelper = new JwtHelper();
 
                 console.log(`expiration: ${jwtHelper.getTokenExpirationDate(token)}`);
@@ -41,7 +45,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/main']);
             },
             (error) => {
-              this.error = error;
+              this.error = "Ошибка, попробуйте позднее.";
             });
     }
 }

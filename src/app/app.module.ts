@@ -10,6 +10,7 @@ import { routing } from './app.routing';
 import { LoginModule } from './login/login.module';
 import { MainModule } from "./main/main.module";
 import { AuthenticationService } from './services';
+import { UserService } from './services';
 import { SignUpModule } from './sign-up/sign-up.module';
 
 import { fakeBackendProvider } from "./helpers";
@@ -28,16 +29,17 @@ import { fakeBackendProvider } from "./helpers";
     SignUpModule,
   ],
   providers: [
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions,
-    // AuthHttp,
-    //  {
-    //     provide: AuthHttp,
-    //     useFactory: authHttpServiceFactory,
-    //     deps: [Http, RequestOptions]
-    //  },
+    // fakeBackendProvider,
+    // MockBackend,
+    // BaseRequestOptions,
+    AuthHttp,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    },
     AuthenticationService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

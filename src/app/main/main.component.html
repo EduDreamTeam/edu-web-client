@@ -1,3 +1,10 @@
-<p>
-  main works!
-</p>
+<div fxFlex="100" fullscreen >
+  <div class="text">
+    Привет, {{(user | async)?.firstName}}!
+  </div>
+  
+  <div class="text">
+    В копилке уже 10 слов!
+  </div>
+</div>
+

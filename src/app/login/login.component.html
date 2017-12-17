@@ -1,8 +1,9 @@
+<mat-toolbar>My App</mat-toolbar>
 <div fxLayoutAlign="center center" fxFlex="100" fullscreen >
     <form role="form" (submit)="login()" fxFlex="30" fxFlex.sm="40" fxFlex.xs="80">
         <mat-card fxLayout="column" fxLayoutAlign="center">
             <mat-card-title fxLayoutAlign="center center">
-                Login
+                АВТОРИЗАЦИЯ
             </mat-card-title>
             <mat-card-content class="card-content">
                 <mat-form-field>
@@ -13,7 +14,7 @@
                             id="username" 
                             name="username">
                     <mat-placeholder fxFLex="100">
-                        <md-icon>Login</md-icon>
+                        <md-icon>Логин</md-icon>
                     </mat-placeholder>
                 </mat-form-field>
                 <mat-form-field>
@@ -24,14 +25,17 @@
                             id="password" 
                             name="password">
                     <mat-placeholder>
-                        <md-icon>Password</md-icon>
+                        <md-icon>Пароль</md-icon>
                     </mat-placeholder>
                 </mat-form-field>
             </mat-card-content>
-            <span *ngIf="error"><small>{{ error }}</small></span>
-            <div fxLayoutAlign="center center" fxFlex="50">
-                <button mat-raised-button color="primary" fxLayout="row" type="submit" fxLayoutAlign="center center" fxFlex="50">
-                    Sign In
+            <span *ngIf="error" class="error"><small>{{ error }}</small></span>
+            <div fxLayoutAlign="space-around center" fxFlex="50">
+                <button mat-raised-button color="primary" fxLayout="row" type="submit" fxLayoutAlign="center center" fxFlex="40">
+                    Войти
+                </button>
+                <button mat-raised-button color="primary" fxLayout="row" (click)="signUp()" fxLayoutAlign="center center" fxFlex="40">
+                    Зарегистрироваться
                 </button>
             </div>
         </mat-card>
