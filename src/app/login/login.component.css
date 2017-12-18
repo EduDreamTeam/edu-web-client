@@ -1,12 +1,12 @@
 :host {
   display: block;
   height: 100vh;
-  background: rgba(255, 213, 79, 0.521);
+  /* background: rgba(255, 213, 79, 0.521); */
 }
 
-mat-card {
+/* mat-card {
   background: rgba(255, 213, 79, 0.1);
-}
+} */
 
 button {
   opacity: 0.8;

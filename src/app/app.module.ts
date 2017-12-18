@@ -14,6 +14,8 @@ import { AuthenticationService } from './services';
 import { UserService } from './services';
 import { SignUpModule } from './sign-up/sign-up.module';
 import { DictionaryService } from "./services";
+import { TrainingModule } from "./training/training.module";
+import { TrainingService } from "./services";
 
 import { fakeBackendProvider } from "./helpers";
 
@@ -30,6 +32,7 @@ import { fakeBackendProvider } from "./helpers";
     HttpModule,
     SignUpModule,
     AddWordModule,
+    TrainingModule,
   ],
   providers: [
     // fakeBackendProvider,
@@ -44,6 +47,7 @@ import { fakeBackendProvider } from "./helpers";
     AuthenticationService,
     UserService,
     DictionaryService,
+    TrainingService,
   ],
   bootstrap: [AppComponent]
 })

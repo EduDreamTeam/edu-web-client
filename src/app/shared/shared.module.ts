@@ -5,6 +5,7 @@ import {
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    MatRadioModule,
   } from '@angular/material';
 import {
     FormsModule,
@@ -22,6 +23,7 @@ const MATERIAL_MODULES = [
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    MatRadioModule,
 ];
 
 @NgModule({

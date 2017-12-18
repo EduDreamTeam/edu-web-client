@@ -1,0 +1,14 @@
+
+
+<div fxLayout="column" fxLayoutAlign="center">
+    <div fxLayout="column" fxLayoutAlign="center" *ngIf="!hasFinished">
+        <div  *ngFor="let train of (trainigList$ | async); let i = index; trackBy:trackByIndex">
+            <train [training]="train"
+                    (answerTest)="answerTest($event)"></train>
+        </div>
+    </div>
+    <div class="result"> Результат: {{correct}} из {{all}}</div>
+</div>
+    
+
+

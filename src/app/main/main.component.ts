@@ -29,4 +29,8 @@ export class MainComponent {
     this.router.navigate(['/add-word']);
   }
 
+  public startTrain(): void {
+    this.router.navigate(['/training']);
+  }
+
 }

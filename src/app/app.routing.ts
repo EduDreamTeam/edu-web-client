@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AddWordComponent } from './add-word/add-word.component';
+import { TrainingComponent } from './training/training.component';
 
 const appRoutes: Routes = [
     {
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
     { 
         path: 'add-word', 
         component: AddWordComponent, 
+    },
+    { 
+        path: 'training', 
+        component: TrainingComponent, 
     },
 ];
 

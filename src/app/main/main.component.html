@@ -6,12 +6,12 @@
   <div class="text">
     В копилке уже {{(words | async)?.length}} слов!
   </div>
-  <div fxLayoutAlign="space-around center" fxFlex="50" (click)="addWord()">
-    <button mat-raised-button color="primary" fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
+  <div fxLayoutAlign="space-around center" fxFlex="50" >
+    <button mat-raised-button color="primary" (click)="addWord()" fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
       Добавить новые слова
     </button>
   
-    <button mat-raised-button color="primary" fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
+    <button mat-raised-button color="primary" (click)="startTrain()" fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
       Начать тренировку
     </button>
   </div>

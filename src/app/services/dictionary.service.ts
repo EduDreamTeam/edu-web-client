@@ -31,7 +31,6 @@ export class DictionaryService {
 
     public getWords(): Observable<DictWordModel> {
         const token = localStorage.getItem('token');
-        console.log(token)
         const options: RequestOptions = new RequestOptions({
             headers: new Headers({ 
                 'Content-Type': 'application/json',
