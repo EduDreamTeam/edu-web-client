@@ -12,7 +12,7 @@ const APP_SERVER = "http://127.0.0.1:5000/";
     styleUrls: ["login.component.css"],
     templateUrl: 'login.component.html',
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     public username: string;
     public password: string;
     public loading: boolean = false;
@@ -20,11 +20,9 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService) { }
-
-    public ngOnInit(): void {
-        this.authenticationService.logout();
-    }
+        private authenticationService: AuthenticationService) { 
+            this.authenticationService.logout();
+        }
 
     public signUp(): void {
         this.router.navigate(['/sign-up']);

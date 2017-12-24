@@ -4,6 +4,11 @@ import { NgModule } from '@angular/core';
 import { HttpModule, Http, RequestOptions, BaseRequestOptions } from '@angular/http';
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { 
+  MatToolbarModule,
+  MatButtonModule,
+ } from '@angular/material';
+ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -33,6 +38,9 @@ import { fakeBackendProvider } from "./helpers";
     SignUpModule,
     AddWordModule,
     TrainingModule,
+    MatToolbarModule,
+    MatButtonModule,
+    FlexLayoutModule,
   ],
   providers: [
     // fakeBackendProvider,

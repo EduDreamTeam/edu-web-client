@@ -1,11 +1,6 @@
 :host {
   display: block;
-  height: 100vh;
-  background: rgba(255, 213, 79, 0.521);
-}
-
-mat-card {
-  background: rgba(255, 213, 79, 0.1);
+  height: 80vh;
 }
 
 button {

@@ -1,2 +1,19 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<mat-toolbar color="accent" > 
+    <div fxLayoutAlign="end" fxFlex="100">
+        <button *ngIf="!loggedIn && !onSignUp" mat-raised-button color="primary" (click)="signUp()" >
+                Зарегистрироваться
+        </button>
+        <button *ngIf="loggedIn" mat-raised-button color="primary" (click)="logout()">
+            Выйти
+        </button>
+        <button *ngIf="loggedIn" mat-raised-button color="primary" (click)="goToMain()" >
+            На главную
+        </button>
+        <button *ngIf="onSignUp" mat-raised-button color="primary" (click)="goToLogin()" >
+            Авторизоваться
+        </button>
+    </div>
+    
+</mat-toolbar>
 <router-outlet></router-outlet>
