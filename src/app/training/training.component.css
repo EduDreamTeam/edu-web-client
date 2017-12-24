@@ -12,10 +12,6 @@ button {
   opacity: 0.8;
 }
 
-.result {
-  text-align: center;
-}
-
 mat-card-content {
   margin-bottom: 0;
 }

@@ -14,6 +14,7 @@ import { TrainingModel } from "../models/training";
 export class TrainingComponent {
 
     public trainigList$: Observable<TrainingModel[]>;
+    public currentIndex: number;
     public result: boolean[];
     public selectedIndex: string;
 
@@ -21,9 +22,9 @@ export class TrainingComponent {
         private router: Router,
         private trainingService: TrainingService,
     ) { 
-        this.trainingService.get().subscribe();
         this.trainigList$ = this.trainingService.get();
         this.result = [];
+        this.currentIndex = 0;
     }
 
     public trackByIndex(index: number, value: string): number {
@@ -34,12 +35,7 @@ export class TrainingComponent {
         this.result.push(isCorrect);
     }
 
-    public get all(): number {
-        return this.result.length;
+    public onNextClick(): void {
+        this.currentIndex++;
     }
-
-    public get correct(): number {
-        return this.result.filter(res => res).length;
-    }
-
 }

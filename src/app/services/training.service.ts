@@ -22,10 +22,7 @@ export class TrainingService {
         });
         const path = `${APP_SERVER}task`;
         return this.http.get(path, options)
-            .map((response: Response) => { 
-                console.log(response.json())
-                return response.json();
-            })
+            .map((response: Response) => response.json())
             .catch((error: Error) => Observable.throw('Server error'));
     }
 }

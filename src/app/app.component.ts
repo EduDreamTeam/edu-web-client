@@ -16,7 +16,6 @@ export class AppComponent implements OnDestroy {
 
   constructor(private router: Router) { 
     this.sub = router.events.subscribe((route:any) => {
-      console.log(route.url)
       this.onSignUp = !!(route.url === "/sign-up");
       this.loggedIn = !!localStorage.getItem('token');
     });

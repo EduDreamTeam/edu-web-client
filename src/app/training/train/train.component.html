@@ -1,16 +1,42 @@
-<div fxLayoutAlign="center center"  fxFlex="100" fullscreen >
-    <form role="form" (submit)="answer()" fxLayout="column" fxFlex="30" fxFlex.sm="40" fxFlex.xs="80">
+<div fxLayoutAlign="center center"  fxFlex="100" fullscreen *ngIf="!hasFinished">
+    <div role="form" fxLayout="column" fxFlex="50" fxFlex.xs="80">
         <mat-card fxLayoutAlign="center" fxLayout="column">
-            <div>Выбери подходящий перевод слову {{word}}.</div>
-            <mat-radio-group [(ngModel)]="selectedIndex" name="selectedIndex" fxLayout="column" >
+            <div>Выбери подходящий перевод слову <i>{{word}}</i>.</div>
+            <mat-radio-group [ngModel]="selectedIndex" name="selectedIndex" fxLayout="column" (change)="onSelect($event.value)">
                 <mat-radio-button *ngFor="let answer of answers; let i = index" 
                     [value]="i"
-                    name="answer{{i}}"
-                    [disabled]="hasAnswered"> {{answer}} </mat-radio-button>
+                    [class.answered]="hasAnswered"
+                    [class.correct]="i===trueIndex && hasAnswered"
+                    [class.wrong]="i===selectedIndex && selectedIndex!== trueIndex && hasAnswered"
+                    > {{answer}} </mat-radio-button>
             </mat-radio-group>
-            <button mat-raised-button color="primary" fxLayout="row" type="submit" fxLayoutAlign="center center" fxFlex="40">
+            <button *ngIf="!hasAnswered" mat-raised-button color="primary" fxLayout="row" (click)="answer()" fxLayoutAlign="center center" fxFlex="40">
                 Ответить
             </button>
+            <button *ngIf="hasNext" mat-raised-button color="primary" fxLayout="row" (click)="onNextClick()" fxLayoutAlign="center center" fxFlex="40">
+                Дальше
+            </button>
+            <button *ngIf="isLastQuestion" mat-raised-button color="primary" fxLayout="row" (click)="onNextClick()" fxLayoutAlign="center center" fxFlex="40">
+                Завершить!
+            </button>
         </mat-card>
-    </form>
+    </div>
+</div>
+
+<div *ngIf="hasFinished" fxFlex="100" fullscreen fxLayout="column" fxLayoutAlign="center center">
+    <div *ngIf="isExcellant" fxLayoutAlign="center" class="text">
+        Отлично! Так держать!
+    </div>
+    
+    <div *ngIf="isGood" fxLayoutAlign="center" class="text">
+        Ты как никогда близок к цели!
+    </div>
+
+    <div *ngIf="isBad" fxLayoutAlign="center" class="text">
+        Кажется, ты плохо старался. Потренируйся еще и все получится.
+    </div>
+    
+    <div fxLayoutAlign="center" class="text">
+        Результат: {{correct}} из {{all}}
+    </div>
 </div>
