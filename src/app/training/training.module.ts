@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from "@angular/core";
 
-import { SharedModule } from "shared";
-import { TrainingComponent } from './training.component';
-import { TrainComponent } from './train/train.component';
+import {SharedModule} from "shared";
+import {TrainingComponent} from "./training.component";
+import {TrainComponent} from "./train/train.component";
 
 @NgModule({
   declarations: [
@@ -13,4 +13,5 @@ import { TrainComponent } from './train/train.component';
     SharedModule,
   ],
 })
-export class TrainingModule { }
+export class TrainingModule {
+}

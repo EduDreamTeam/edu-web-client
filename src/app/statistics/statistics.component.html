@@ -1,0 +1,56 @@
+<div fxFlex="100" fxLayout="row">
+  <div fxFlex="65">
+    <canvas baseChart
+            [datasets]="data"
+            [labels]="labels"
+            chartType="bar"></canvas>
+  </div>
+  <form role="form" fxFlex="30">
+    <div>
+      <span>Дата начала</span>
+        <input matInput [matDatepicker]="picker1"
+               placeholder="Выберите дату"
+               [(ngModel)]="filter.startDate"
+               name="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </div>
+
+    <div>
+      <span>Дата конца</span>
+      <input matInput [matDatepicker]="picker2"
+             placeholder="Выберите дату"
+             [(ngModel)]="filter.endDate"
+             name="endDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </div>
+
+    <div>
+      <span>Минимальный результат</span>
+      <div fxLayout="row">
+        <mat-slider tickInterval="5"
+                    min="0"
+                    max="100"
+                    [(ngModel)]="filter.minResult"
+                    name="minResult"></mat-slider>
+        <input class="inpt" matInput type="number" placeholder="0" [(ngModel)]="filter.minResult" name="minResultInput">
+      </div>
+    </div>
+
+    <div>
+      <span>Максимальный результат</span>
+      <div fxLayout="row">
+        <mat-slider tickInterval="5"
+                    min="0"
+                    max="100"
+                    [(ngModel)]="filter.maxResult"
+                    name="maxResult"></mat-slider>
+        <input class="inpt" matInput type="number" placeholder="0" [(ngModel)]="filter.maxResult" name="maxResultInput">
+      </div>
+    </div>
+    <div>{{errorMessage}}</div>
+
+    <button matButton class="submit-btn" type="button" (click)="onSendFilter()" [disabled]=isInvalid>Фильтровать</button>
+  </form>
+</div>

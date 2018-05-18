@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from "@angular/core";
 
-import { SharedModule } from "shared";
-import { LoginComponent } from './login.component';
+import {SharedModule} from "shared";
+import {LoginComponent} from "./login.component";
 
 @NgModule({
   declarations: [
@@ -11,4 +11,5 @@ import { LoginComponent } from './login.component';
     SharedModule,
   ],
 })
-export class LoginModule { }
+export class LoginModule {
+}
