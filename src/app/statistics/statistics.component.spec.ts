@@ -1,7 +1,9 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {async, ComponentFixture, TestBed, tick} from "@angular/core/testing";
 import {ChartsModule} from "ng2-charts";
 import {StatisticsComponent} from "./statistics.component";
 import {SharedModule} from "shared/*";
+import {By} from "@angular/platform-browser";
+
 
 const FAKE_RESULT = [
   {
@@ -64,4 +66,25 @@ describe("StatisticsComponent", () => {
       expect(component.data).toEqual(FAKE_DATA);
     });
   });
+
+  describe("Methods", () => {
+    it("should action with current filters", () => {
+      component.filter.startDate = new Date(2018, 3, 3);
+      component.filter.endDate = new Date(2018, 4, 3);
+      component.filter.minResult = 0.2;
+      component.filter.maxResult = 0.5;
+
+      spyOn(component.sendFilter, "emit");
+      component.onSendFilter();
+
+      expect(component.sendFilter.emit).toHaveBeenCalledWith({
+        startDate: new Date(2018, 3, 3),
+        endDate: new Date(2018, 4, 3),
+        minResult: 0.2,
+        maxResult: 0.5
+      });
+    });
+  });
+
+
 });
