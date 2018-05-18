@@ -19,10 +19,10 @@ export class StatisticsService {
   }
 
   private sortByDate(a, b) {
-    if ( a.date.getTime < b.date.getTime()) {
+    if ( a.date.getTime() < b.date.getTime()) {
       return -1;
     }
-    if ( a.date.getTime > b.date.getTime()) {
+    if ( a.date.getTime() > b.date.getTime()) {
       return 1;
     }
     return 0;
@@ -44,16 +44,18 @@ export class StatisticsService {
 
   public getStatistics(data: {startDate, endDate, minResult, maxResult}): Observable<any> {
     const token = localStorage.getItem("token");
-    const params = `startDate=${data.startDate}
-      &endDate=${data.endDate}
+    const params = `startDate=${data.startDate.toISOString()}
+      &endDate=${data.endDate.toISOString()}
       &minResult=${data.minResult}
       &maxResult=${data.maxResult}`;
+
     const options: RequestOptions = new RequestOptions({
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: `JWT ${token}`
       })
     });
+
     const path = `${APP_SERVER}statistics?${params}`;
     let fakeResult = new Array(5);
     fakeResult = [
@@ -75,7 +77,7 @@ export class StatisticsService {
     ];
 
     return Observable.of(fakeResult.sort(this.sortByDate));
-    /* return this.http.get(path, options)
+    /*return this.http.get(path, options)
       .map((response: Response) => response.json())
       .catch((error: Error) => Observable.throw("Server error"));*/
   }

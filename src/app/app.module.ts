@@ -5,6 +5,7 @@ import {HttpModule, Http, RequestOptions, BaseRequestOptions} from "@angular/htt
 import {provideAuth, AuthHttp, AuthConfig} from "angular2-jwt";
 import {MockBackend, MockConnection} from "@angular/http/testing";
 import {ChartsModule} from "ng2-charts";
+import { FormsModule } from '@angular/forms';
 import {
   MatToolbarModule,
   MatButtonModule,
@@ -57,7 +58,8 @@ import {StatisticsContainer} from "./statistics/statistics.container";
     ChartsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSliderModule
+    MatSliderModule,
+    FormsModule
   ],
   providers: [
     // fakeBackendProvider,
