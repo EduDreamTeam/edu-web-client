@@ -65,14 +65,124 @@ describe("StatisticsComponent", () => {
       }];
       expect(component.data).toEqual(FAKE_DATA);
     });
+
+    it("ErrorMessage: should return empty string", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2000, 0, 1),
+        endDate: new Date(2019, 0, 1),
+        minResult: 0,
+        maxResult: 100
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("");
+    });
+
+    it("ErrorMessage: should return 'Введите корректную дату начала'", () => {
+      const CORRECT_FILTER = {
+        startDate: "bad date",
+        endDate: new Date(2019, 0, 1),
+        minResult: 0,
+        maxResult: 100
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Введите корректную дату начала");
+    });
+
+    it("ErrorMessage: should return 'Введите корректную дату конца'", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2019, 0, 1),
+        endDate: "bad date",
+        minResult: 0,
+        maxResult: 100
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Введите корректную дату конца");
+    });
+
+    it("ErrorMessage: should return 'Дата начала не может быть больше даты конца'", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2019, 0, 1),
+        endDate: new Date(2000, 0, 1),
+        minResult: 0,
+        maxResult: 100
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Дата начала не может быть больше даты конца");
+    });
+
+    it("ErrorMessage: should return 'Введите корректный минимальный результат'", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2000, 0, 1),
+        endDate: new Date(2019, 0, 1),
+        minResult: "bad",
+        maxResult: 100
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Введите корректный минимальный результат");
+    });
+
+    it("ErrorMessage: should return 'Введите корректный минимальный результат'", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2000, 0, 1),
+        endDate: new Date(2019, 0, 1),
+        minResult: -1,
+        maxResult: 100
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Введите корректный минимальный результат");
+    });
+
+    it("ErrorMessage: should return 'Введите корректный минимальный результат'", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2000, 0, 1),
+        endDate: new Date(2019, 0, 1),
+        minResult: 101,
+        maxResult: 100
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Введите корректный минимальный результат");
+    });
+
+    it("ErrorMessage: should return 'Введите корректный максимальный результат'", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2000, 0, 1),
+        endDate: new Date(2019, 0, 1),
+        minResult: 0,
+        maxResult: "bad"
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Введите корректный максимальный результат");
+    });
+
+    it("ErrorMessage: should return 'Введите корректный максимальный результат'", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2000, 0, 1),
+        endDate: new Date(2019, 0, 1),
+        minResult: 0,
+        maxResult: -9
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Введите корректный максимальный результат");
+    });
+
+    it("ErrorMessage: should return 'Введите корректный максимальный результат'", () => {
+      const CORRECT_FILTER = {
+        startDate: new Date(2000, 0, 1),
+        endDate: new Date(2019, 0, 1),
+        minResult: 0,
+        maxResult: 101
+      };
+      this.filter = CORRECT_FILTER;
+      expect(component.errorMessage).toEqual("Введите корректный максимальный результат");
+    });
   });
 
   describe("Methods", () => {
     it("should action with current filters", () => {
       component.filter.startDate = new Date(2018, 3, 3);
       component.filter.endDate = new Date(2018, 4, 3);
-      component.filter.minResult = 0.2;
-      component.filter.maxResult = 0.5;
+      component.filter.minResult = 20;
+      component.filter.maxResult = 50;
 
       spyOn(component.sendFilter, "emit");
       component.onSendFilter();
