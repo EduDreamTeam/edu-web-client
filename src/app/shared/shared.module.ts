@@ -6,7 +6,12 @@ import {
   MatIconModule,
   MatCardModule,
   MatRadioModule,
+  MatDatepickerModule,
+  MatSliderModule,
+  MatNativeDateModule,
+  MatToolbarModule
 } from "@angular/material";
+
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -24,6 +29,10 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatCardModule,
   MatRadioModule,
+  MatDatepickerModule,
+  MatSliderModule,
+  MatNativeDateModule,
+  MatToolbarModule
 ];
 
 @NgModule({

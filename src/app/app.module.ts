@@ -4,10 +4,18 @@ import {NgModule} from "@angular/core";
 import {HttpModule, Http, RequestOptions, BaseRequestOptions} from "@angular/http";
 import {provideAuth, AuthHttp, AuthConfig} from "angular2-jwt";
 import {MockBackend, MockConnection} from "@angular/http/testing";
+import {ChartsModule} from "ng2-charts";
 import {
   MatToolbarModule,
   MatButtonModule,
+  MatDatepickerModule,
+  MatSliderModule,
+  MatNativeDateModule
 } from "@angular/material";
+
+import 'hammerjs';
+
+
 import {FlexLayoutModule} from "@angular/flex-layout";
 
 import {AppComponent} from "./app.component";
@@ -21,14 +29,17 @@ import {SignUpModule} from "./sign-up/sign-up.module";
 import {DictionaryService} from "./services";
 import {TrainingModule} from "./training/training.module";
 import {TrainingService} from "./services";
+import {StatisticsService} from "./services";
 
 import {fakeBackendProvider} from "./helpers";
-import { StatisticsComponent } from './statistics/statistics.component';
+import {StatisticsComponent} from "./statistics/statistics.component";
+import {StatisticsContainer} from "./statistics/statistics.container";
 
 @NgModule({
   declarations: [
     AppComponent,
     StatisticsComponent,
+    StatisticsContainer
   ],
   imports: [
     BrowserModule,
@@ -43,6 +54,10 @@ import { StatisticsComponent } from './statistics/statistics.component';
     MatToolbarModule,
     MatButtonModule,
     FlexLayoutModule,
+    ChartsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule
   ],
   providers: [
     // fakeBackendProvider,
@@ -58,6 +73,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
     UserService,
     DictionaryService,
     TrainingService,
+    StatisticsService
   ],
   bootstrap: [AppComponent]
 })

@@ -5,7 +5,7 @@ import {MainComponent} from "./main/main.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {AddWordComponent} from "./add-word/add-word.component";
 import {TrainingComponent} from "./training/training.component";
-import {StatisticsComponent} from "./statistics/statistics.component";
+import {StatisticsContainer} from "./statistics/statistics.container";
 
 const appRoutes: Routes = [
   {
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   },
   {
     path: "statistics",
-    component: StatisticsComponent
+    component: StatisticsContainer
   }
 ];
 
