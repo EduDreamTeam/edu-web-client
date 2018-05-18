@@ -1,9 +1,10 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from "@angular/core";
 
 @Component({
   selector: "app-statistics",
   templateUrl: "./statistics.component.html",
-  styleUrls: ["./statistics.component.css"]
+  styleUrls: ["./statistics.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatisticsComponent {
   @Input()
@@ -34,13 +35,41 @@ export class StatisticsComponent {
     }];
   }
 
+  public get errorMessage() {
+    if (!(this.filter.startDate instanceof Date) || isNaN(this.filter.startDate.getTime())) {
+      return "Введите корректную дату начала";
+    }
+
+    if (!(this.filter.endDate instanceof Date) || isNaN(this.filter.endDate.getTime())) {
+      return "Введите корректную дату конца";
+    }
+    if (this.filter.startDate.getTime() > this.filter.endDate.getTime()) {
+      return "Дата начала не может быть больше даты конца";
+    }
+    if (!(Number.isInteger(this.filter.minResult) && this.filter.minResult >= 0 && this.filter.minResult / 100 <= 1)) {
+      return "Введите корректный минимальный результат";
+    }
+    if (!(Number.isInteger(this.filter.maxResult) && this.filter.maxResult >= 0 && this.filter.maxResult / 100 <= 1)) {
+      return "Введите корректный максимальный результат";
+    }
+    return "";
+  }
+
+  public get isInvalid() {
+    console.log(this.errorMessage)
+    console.log(this.errorMessage.length)
+    return this.errorMessage.length;
+  }
+
   public onSendFilter() {
+    if (this.isInvalid) {
+      return;
+    }
     this.sendFilter.emit({
       startDate: this.filter.startDate,
       endDate: this.filter.endDate,
-      minResult: this.filter.minResult,
-      maxResult: this.filter.maxResult
+      minResult: this.filter.minResult / 100,
+      maxResult: this.filter.maxResult / 100
     });
   }
-
 }

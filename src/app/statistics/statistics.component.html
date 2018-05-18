@@ -48,10 +48,9 @@
                     name="maxResult"></mat-slider>
         <input class="inpt" matInput type="number" placeholder="0" [(ngModel)]="filter.maxResult" name="maxResultInput">
       </div>
-
-
     </div>
+    <div>{{errorMessage}}</div>
 
-    <button matButton class="submit-btn" type="button" (click)="onSendFilter()">Фильтровать</button>
+    <button matButton class="submit-btn" type="button" (click)="onSendFilter()" [disabled]=isInvalid>Фильтровать</button>
   </form>
 </div>

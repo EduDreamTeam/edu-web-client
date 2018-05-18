@@ -73,7 +73,7 @@ describe("StatisticsComponent", () => {
         minResult: 0,
         maxResult: 100
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("");
     });
 
@@ -84,7 +84,7 @@ describe("StatisticsComponent", () => {
         minResult: 0,
         maxResult: 100
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Введите корректную дату начала");
     });
 
@@ -95,7 +95,7 @@ describe("StatisticsComponent", () => {
         minResult: 0,
         maxResult: 100
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Введите корректную дату конца");
     });
 
@@ -106,7 +106,7 @@ describe("StatisticsComponent", () => {
         minResult: 0,
         maxResult: 100
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Дата начала не может быть больше даты конца");
     });
 
@@ -117,7 +117,7 @@ describe("StatisticsComponent", () => {
         minResult: "bad",
         maxResult: 100
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Введите корректный минимальный результат");
     });
 
@@ -128,7 +128,7 @@ describe("StatisticsComponent", () => {
         minResult: -1,
         maxResult: 100
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Введите корректный минимальный результат");
     });
 
@@ -139,7 +139,7 @@ describe("StatisticsComponent", () => {
         minResult: 101,
         maxResult: 100
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Введите корректный минимальный результат");
     });
 
@@ -150,7 +150,7 @@ describe("StatisticsComponent", () => {
         minResult: 0,
         maxResult: "bad"
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Введите корректный максимальный результат");
     });
 
@@ -161,7 +161,7 @@ describe("StatisticsComponent", () => {
         minResult: 0,
         maxResult: -9
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Введите корректный максимальный результат");
     });
 
@@ -172,7 +172,7 @@ describe("StatisticsComponent", () => {
         minResult: 0,
         maxResult: 101
       };
-      this.filter = CORRECT_FILTER;
+      component.filter = CORRECT_FILTER;
       expect(component.errorMessage).toEqual("Введите корректный максимальный результат");
     });
   });
