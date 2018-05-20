@@ -76,9 +76,9 @@ export class StatisticsService {
       }
     ];
 
-    return Observable.of(fakeResult.sort(this.sortByDate));
-    /*return this.http.get(path, options)
+    // return Observable.of(fakeResult.sort(this.sortByDate));
+    return this.http.get(path, options)
       .map((response: Response) => response.json())
-      .catch((error: Error) => Observable.throw("Server error"));*/
+      .catch((error: Error) => Observable.throw("Server error"));
   }
 }

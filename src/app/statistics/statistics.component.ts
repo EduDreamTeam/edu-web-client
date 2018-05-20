@@ -25,12 +25,12 @@ export class StatisticsComponent {
   }
 
   public get labels() {
-    return this.result.map(res => res.date.toISOString());
+    return this.result? this.result.map(res => (new Date(res.date)).toISOString()): [];
   }
 
   public get data() {
     return [{
-      data: this.result.map(res => res.result * 100),
+      data: this.result? this.result.map(res => res.result * 100): [],
       label: "Результаты тестирования"
     }];
   }
@@ -56,8 +56,6 @@ export class StatisticsComponent {
   }
 
   public get isInvalid() {
-    console.log(this.errorMessage)
-    console.log(this.errorMessage.length)
     return this.errorMessage.length;
   }
 
