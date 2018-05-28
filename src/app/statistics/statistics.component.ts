@@ -25,12 +25,21 @@ export class StatisticsComponent {
   }
 
   public get labels() {
-    return this.result? this.result.map(res => (new Date(res.date)).toISOString()): [];
+    return this.result ? this.result.map(res => {
+      const day = (new Date(res.date)).getDate();
+      const month = (new Date(res.date)).getMonth();
+      const year = (new Date(res.date)).getFullYear();
+      return `${day}-${month}-${year}`;
+    }) : [];
   }
 
   public get data() {
+    console.log([{
+      data: this.result ? this.result.map(res => res.result * 100) : [],
+      label: "Результаты тестирования"
+    }])
     return [{
-      data: this.result? this.result.map(res => res.result * 100): [],
+      data: this.result ? this.result.map(res => res.result * 100) : [],
       label: "Результаты тестирования"
     }];
   }
