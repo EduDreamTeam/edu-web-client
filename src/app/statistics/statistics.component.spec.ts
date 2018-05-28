@@ -179,14 +179,18 @@ describe("StatisticsComponent", () => {
 
   describe("Methods", () => {
     it("should action with current filters", () => {
+
+      givenProperlyConfigured();
       component.filter.startDate = new Date(2018, 3, 3);
       component.filter.endDate = new Date(2018, 4, 3);
-      component.filter.minResult = 20;
+      component.filter.minResult = 40;
       component.filter.maxResult = 50;
 
+      whenSearchIsInvoked();
       spyOn(component.sendFilter, "emit");
       component.onSendFilter();
 
+      thenProperSearchRequestSentToServer();
       expect(component.sendFilter.emit).toHaveBeenCalledWith({
         startDate: new Date(2018, 3, 3),
         endDate: new Date(2018, 4, 3),
